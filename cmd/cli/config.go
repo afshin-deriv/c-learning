@@ -14,6 +14,16 @@ type Config struct {
 	UserID     string `json:"user_id"`
 	LastLesson int32  `json:"last_lesson"`
 	WorkingDir string `json:"working_dir"`
+	CurrentDir string `json:"current_dir"` // Added to track current lesson directory
+}
+
+// homeDir returns the user's home directory or current directory as fallback
+func homeDir() string {
+	home, err := os.UserHomeDir()
+	if err != nil {
+		return "."
+	}
+	return home
 }
 
 // getConfigPath returns the path to the config file
@@ -48,6 +58,7 @@ func loadConfig() Config {
 			UserID:     generateUserID(),
 			LastLesson: 1,
 			WorkingDir: filepath.Join(homeDir(), "c-learning"),
+			CurrentDir: "",
 		}
 
 		// Save the new config
@@ -74,13 +85,4 @@ func saveConfig(config Config) error {
 
 	configPath := getConfigPath()
 	return os.WriteFile(configPath, data, 0644)
-}
-
-// homeDir returns the user's home directory or current directory as fallback
-func homeDir() string {
-	home, err := os.UserHomeDir()
-	if err != nil {
-		return "."
-	}
-	return home
 }

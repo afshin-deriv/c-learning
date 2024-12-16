@@ -189,7 +189,7 @@ func (s *server) GetProgress(ctx context.Context, req *pb.ProgressRequest) (*pb.
 }
 
 func main() {
-	lis, err := net.Listen("tcp", ":50051")
+	lis, err := net.Listen("tcp", ":50052")
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}
@@ -197,7 +197,7 @@ func main() {
 	s := grpc.NewServer()
 	pb.RegisterLearningServiceServer(s, NewServer())
 
-	log.Printf("Server listening on :50051")
+	log.Printf("Server listening on :50052")
 	if err := s.Serve(lis); err != nil {
 		log.Fatalf("failed to serve: %v", err)
 	}
