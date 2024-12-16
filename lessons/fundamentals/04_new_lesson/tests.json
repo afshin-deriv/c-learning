@@ -1,0 +1,7 @@
+[
+    {
+        "input": "",
+        "expected_output": "Hello, World!\n",
+        "description": "Program should print 'Hello, World!' followed by a newline"
+    }
+]

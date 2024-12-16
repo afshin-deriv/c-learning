@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+package clearning;
+option go_package = "github.com/afshin-deriv/c-learning/proto";
+
+service LearningService {
+  // Get lesson details
+  rpc GetLesson(LessonRequest) returns (LessonResponse) {}
+  
+  // Validate user's code submission
+  rpc ValidateCode(CodeSubmission) returns (ValidationResponse) {}
+  
+  // Get user's progress
+  rpc GetProgress(ProgressRequest) returns (ProgressResponse) {}
+}
+
+message LessonRequest {
+  int32 lesson_id = 1;
+}
+
+message LessonResponse {
+  int32 lesson_id = 1;
+  string title = 2;
+  string description = 3;
+  string example_code = 4;
+  repeated string learning_objectives = 5;
+  repeated TestCase test_cases = 6;
+}
+
+message TestCase {
+  string input = 1;
+  string expected_output = 2;
+  string description = 3;
+}
+
+message CodeSubmission {
+  int32 lesson_id = 1;
+  string code = 2;
+}
+
+message ValidationResponse {
+  bool is_valid = 1;
+  repeated TestResult test_results = 2;
+  string feedback = 3;
+  bool can_proceed = 4;
+}
+
+message TestResult {
+  bool passed = 1;
+  string test_case_description = 2;
+  string actual_output = 3;
+  string expected_output = 4;
+}
+
+message ProgressRequest {
+  string user_id = 1;
+}
+
+message ProgressResponse {
+  int32 current_lesson = 1;
+  repeated int32 completed_lessons = 2;
+  float completion_percentage = 3;
+}
