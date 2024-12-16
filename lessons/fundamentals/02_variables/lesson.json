@@ -1,0 +1,12 @@
+{
+    "id": 2,
+    "title": "Variables and Data Types",
+    "description": "Learn about basic data types in C and how to use variables. In this lesson, you'll create a program that declares variables of different types, performs calculations, and prints the results.",
+    "learning_objectives": [
+        "Understand basic C data types (int, float)",
+        "Learn how to declare and initialize variables",
+        "Practice using variables in calculations",
+        "Learn about printf formatting for different data types"
+    ],
+    "prerequisites": [1]
+}

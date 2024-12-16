@@ -1,0 +1,7 @@
+[
+    {
+        "input": "",
+        "expected_output": "Age: 25 years\nHeight: 1.75 meters\nWeight: 70.5 kg\nBMI: 23.0\n",
+        "description": "Program should correctly declare variables, perform BMI calculation, and format output"
+    }
+]
